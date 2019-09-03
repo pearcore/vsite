@@ -9,7 +9,7 @@ python -m  venv lhvirenv 建立虚拟空间
 runve 我的运行虚拟空间
 (.\lhvirenv\Scripts\activate.bat) 其实也就是这个运行
 pip install django==2.1.8 2.2 好像有问题, 暂时运行2.1.8
-pip install djangorestframework 
+pip install djangorestframework
 
 django-admin startproject vsite //创建vsite
 python manage.py startapp voziosite   # 创建应用
@@ -20,14 +20,20 @@ python manage.py makemigrations #迁移
 python manage.py migrate voziosite zero # 删除这个东西.
 
 
-git clone https://github.com/pearcore/vsite.git          
+git clone https://github.com/pearcore/vsite.git
+git status
+git add .
+git commit -m "message"
+git push
+:)
+
 mkvirtualenv --python=/usr/bin/python3.7 lhvirenv
 
 pip install django==2.1.8
 pip install djangorestframework
 
-python3.7 manage.py collectstatic    
-zip -r myfile.zip ./*   
+python3.7 manage.py collectstatic
+zip -r myfile.zip ./*
 
 Source code:
 /home/vozio/vsite
@@ -45,8 +51,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'vsite.settings'
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-/static/ 	/home/vozio/vsite/static 	 
-/media/ 	/home/vozio/vsite/media 	 
+/static/ 	/home/vozio/vsite/static
+/media/ 	/home/vozio/vsite/media
 
 from . import views as mainViews # . 表示是从本地
 
@@ -55,7 +61,7 @@ http://www.cnblogs.com/fnng/p/3737964.html
 
 
 
-频道: 留言板 , 文章 , 简介 , 管理, 
+频道: 留言板 , 文章 , 简介 , 管理,
 
 标题:
 内容:
