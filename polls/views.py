@@ -4,6 +4,18 @@ from django.urls import reverse
 from django.views import generic
 
 from .models import Choice, Question
+from .serializer import QuestionSerializer
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['GET','POST'])
+def apiAllquestion(request):
+    if request.method == 'GET':
+        questions = Question.objects.all()
+        serializer = QuestionSerializer(questions, many=True)
+        return Response(serializer.data)
+
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
