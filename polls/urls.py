@@ -9,5 +9,7 @@ urlpatterns = [
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
     
-    path('apiquestionlist/', views.apiAllquestion, name= 'apiquestionlist')
+    path('apiquestionlistold/', views.apiAllquestionold2 , name= 'apiquestionlistold'),
+    path('apiquestionlistnew/', views.apiAllquestionnew.as_view() , name= 'apiquestionlistnew'),
+    path('apiPostTest/', views.apiPostTest, name= 'apiposttest'),
 ]

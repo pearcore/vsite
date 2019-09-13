@@ -8,13 +8,48 @@ from .serializer import QuestionSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import generics
+from . import LHKit
 
 @api_view(['GET','POST'])
-def apiAllquestion(request):
-    if request.method == 'GET':
-        questions = Question.objects.all()
-        serializer = QuestionSerializer(questions, many=True)
-        return Response(serializer.data)
+def apiAllquestionoldzz(request):
+    questions = Question.objects.all()
+    serializer = QuestionSerializer(questions, many=True)
+    ha = LHKit.LHStand.LHResult()
+    ha['data'] = serializer.data
+
+    return Response(ha)
+
+@api_view(['GET','POST'])
+def apiAllquestionold2(request, format=None):
+    questions = Question.objects.all().order_by('-pub_date')
+    itCount = len(questions)
+    page = int ( request.POST.get('page',1 ) )
+    rows = int ( request.POST.get('rows', 5  ) )
+   
+    standRt = LHKit.LHStand.LHResult()
+    if (page-1)*rows > itCount :
+        standRt ['data'] = []
+    else :
+        lastPageNumber = rows
+        if  ((page * rows) >= itCount ) :
+            lastPageNumber = itCount - ((page - 1) * rows)
+        ser = QuestionSerializer(instance=questions[(page-1)*rows: (page-1)*rows + lastPageNumber] , many=True)
+        standRt['data'] = ser.data
+    resp =  Response(standRt)
+    return resp
+
+@api_view(['GET','POST'])
+def apiPostTest(request):
+    rt = LHKit.LHStand.LHResult()
+    #name1 = request.GET.get('para', "无数据" )
+    name1 = request.POST.get('para', "无数据" )
+    rt['data'] = name1
+    return Response(rt)
+
+class apiAllquestionnew(generics.ListAPIView):
+    queryset =  Question.objects.all()  # Product.objects.all()
+    serializer_class = QuestionSerializer
 
 
 def index(request):
