@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'netask.apps.NetaskConfig',
     'rest_framework',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
