@@ -25,9 +25,10 @@ router.register(r'users', views.UserViewSet) #
 router.register(r'groups', views.GroupViewSet) #
 
 urlpatterns = [
+    path('finance/', include('finance.urls')),
+    path('netask/', include('netask.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('netask/', include('netask.urls')),
     
 
     path('', include(router.urls)), #
