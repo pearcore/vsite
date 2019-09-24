@@ -6,7 +6,7 @@ from vsite import LHKit
 from .models import FinanceType,FinanceRecord
 from .serializer import FinanceTypeSerializer,FinanceRecordSerializer
 
-@api_view(['POST','GET'])
+@api_view(['POST'])
 def typelist(request, format=None):
     ftypes = FinanceType.objects.all().order_by('-CreateDate')
     itCount = len(ftypes)
