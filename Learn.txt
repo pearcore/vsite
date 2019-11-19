@@ -23,10 +23,13 @@ python manage.py migrate voziosite zero # 删除这个东西.
 
 git clone https://github.com/pearcore/vsite.git
 git status
-git add .
+git add . 
 git commit -m "message"
 git push
-:)
+
+强制更新
+git fetch --all  // 强行更新到最新
+git reset --hard origin/master //把本地指向到最新
 
 mkvirtualenv --python=/usr/bin/python3.7 lhvirenv
 
