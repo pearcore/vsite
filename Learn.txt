@@ -20,6 +20,7 @@ python manage.py migrate #迁移
 
 python manage.py migrate voziosite zero # 删除这个东西.
 
+python manage.py createsuperuser 建立用户
 
 git clone https://github.com/pearcore/vsite.git
 git status
